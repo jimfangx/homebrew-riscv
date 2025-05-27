@@ -20,7 +20,8 @@ class RiscvIsaSim < Formula
     mkdir "build"
     cd "build" do
       args = [
-        "--prefix=#{prefix}", "--with-target=../../riscv-pk/main/riscv64-unknown-elf"
+        "--prefix=#{prefix}", "--with-target=../../riscv-pk/main/riscv64-unknown-elf",
+        "--with-arch=rv64gc_zifencei",
       ]
       if build.with? "boost"
         # This seems to be needed at least on macos/arm64
@@ -29,6 +30,7 @@ class RiscvIsaSim < Formula
         args << "--without-boost"
         args << "--without-boost-asio"
         args << "--without-boost-regex"
+        args << "--with-arch=rv64gc_zifencei"
       end
       # configure uses --with-target to set TARGET_ARCH but homebrew formulas only provide "with"/"without" options
       system "../configure", *args 

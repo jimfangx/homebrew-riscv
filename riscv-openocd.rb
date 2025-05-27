@@ -21,7 +21,7 @@ class RiscvOpenocd < Formula
 
   def install
     system "./bootstrap", "nosubmodule"
-    system "./configure", *std_configure_args, "--disable-silent-rules"
+    system "./configure", *std_configure_args, "--disable-silent-rules", "--with-arch=rv64gc_zifencei"
     system "make", "install"
   end
 
