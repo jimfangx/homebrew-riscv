@@ -64,6 +64,7 @@ class RiscvGnuToolchain < Formula
       "--disable-gdb"
     ]
     args << "--enable-multilib" unless build.with?("NOmultilib")
+    args << "--with-arch=rv64gc_zifencei"
 
     # Workaround for M1
     # See https://github.com/riscv/homebrew-riscv/issues/47
